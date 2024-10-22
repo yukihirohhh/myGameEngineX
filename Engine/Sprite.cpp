@@ -1,8 +1,6 @@
 #include "Sprite.h"
 #include "Camera.h"
 
-
-//コンストラクタ
 Sprite::Sprite() :
 	vertexNum_(0), vertices_(nullptr), pVertexBuffer_(nullptr),
 	indexNum(0), index_(nullptr), pIndexBuffer_(nullptr),
@@ -11,13 +9,11 @@ Sprite::Sprite() :
 {
 }
 
-//デストラクタ
 Sprite::~Sprite()
 {
 	Release();
 }
 
-//初期化
 HRESULT Sprite::Initialize()
 {
 	//頂点情報
@@ -49,24 +45,15 @@ HRESULT Sprite::Initialize()
 	return S_OK;
 }
 
-
-//描画
 void Sprite::Draw(Transform& transform)
 {
 	Direct3D::SetShader(SHADER_2D);
-
-	//コンスタントバッファに情報を渡す
 	transform.Calclation();
 	PassDataToCB(transform.GetWorldMatrix());
-
-	//頂点バッファ、インデックスバッファ、コンスタントバッファをパイプラインにセット
 	SetBufferToPipeline();
-
-	//描画
 	Direct3D::pContext->DrawIndexed(indexNum, 0, 0);
 }
 
-//解放
 void Sprite::Release()
 {
 	SAFE_DELETE_ARRAY(vertices_);

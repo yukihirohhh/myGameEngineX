@@ -1,17 +1,14 @@
 #include "MiniOden.h"
 
-//コンストラクタ
 MiniOden::MiniOden(GameObject* parent)
     :GameObject(parent, "MiniOden")
 {
 }
 
-//デストラクタ
 MiniOden::~MiniOden()
 {
 }
 
-//初期化
 void MiniOden::Initialize()
 {
     pFbx = new Fbx;
@@ -24,19 +21,16 @@ void MiniOden::Initialize()
     transform_.scale_.z = 0.2f;
 }
 
-//更新
 void MiniOden::Update()
 {
   
 }
 
-//描画
 void MiniOden::Draw()
 {
     pFbx->Draw(transform_);
 }
 
-//開放
 void MiniOden::Release()
 {
 }

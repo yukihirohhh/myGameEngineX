@@ -24,7 +24,6 @@ namespace Direct3D
 
 }
 
-//‰Šú‰»
 HRESULT Direct3D::Initialize(int winW, int winH, HWND hWnd)
 {
 	HRESULT hr;

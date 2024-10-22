@@ -2,7 +2,6 @@
 #include "Camera.h"
 
 
-//コンストラクタ
 Quad::Quad(): 
 	vertexNum_(0),	vertices_(nullptr),	pVertexBuffer_(nullptr),
 	indexNum(0), index_(nullptr), pIndexBuffer_(nullptr),
@@ -11,24 +10,22 @@ Quad::Quad():
 {
 }
 
-//デストラクタ
 Quad::~Quad()
 {
 	Release();
 }
 
-//初期化
 HRESULT Quad::Initialize()
 {
 	//頂点情報
-	InitVertexData();					//データを用意して
+	InitVertexData();					//データを用意
 	if (FAILED(CreateVertexBuffer()))	//頂点バッファ作成
 	{
 		return E_FAIL;
 	}
 
 	//インデックス情報
-	InitIndexData();					//データを用意して
+	InitIndexData();					//データを用意
 	if (FAILED(CreateIndexBuffer()))	//インデックスバッファ作成
 	{
 		return E_FAIL;
@@ -49,8 +46,6 @@ HRESULT Quad::Initialize()
 	return S_OK;
 }
 
-
-//描画
 void Quad::Draw(Transform& transform)
 {
 	Direct3D::SetShader(SHADER_3D);
@@ -65,7 +60,6 @@ void Quad::Draw(Transform& transform)
 	Direct3D::pContext->DrawIndexed(indexNum, 0, 0);
 }
 
-//解放
 void Quad::Release()
 {
 	SAFE_DELETE_ARRAY(vertices_);
@@ -76,20 +70,6 @@ void Quad::Release()
 	SAFE_RELEASE(pVertexBuffer_);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-///////////////ここからはprivate関数///////////////
 
 //頂点情報の準備
 void Quad::InitVertexData()

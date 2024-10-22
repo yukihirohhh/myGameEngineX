@@ -4,18 +4,15 @@
 #include "MiniOden.h"
 #include "Engine/SceneManager.h"
 
-//コンストラクタ
 Player::Player(GameObject* parent)
     :GameObject(parent, "Player")
 {
 }
 
-//デストラクタ
 Player::~Player()
 {
 }
 
-//初期化
 void Player::Initialize()
 {
     pFbx = new Fbx;
@@ -28,7 +25,6 @@ void Player::Initialize()
     Instantiate<MiniOden>(this);
 }
 
-//更新
 void Player::Update()
 {
     transform_.rotate_.y++;
@@ -56,13 +52,11 @@ void Player::Update()
     }
 }
 
-//描画
 void Player::Draw()
 {
     pFbx->Draw(transform_);
 }
 
-//開放
 void Player::Release()
 {
 }
