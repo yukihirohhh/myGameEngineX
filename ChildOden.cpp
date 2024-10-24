@@ -25,11 +25,10 @@ void Bullet::Initialize()
     transform_.scale_.y = 0.2f;
     transform_.scale_.z = 0.2f;
 
-    //SphereCollider* collision = new SphereCollider(1.0f);
-    //AddCollider(collision);
+    SphereCollider* collision = new SphereCollider(1.0f);
+    AddCollider(collision);
 }
 
-//XV
 void Bullet::Update()
 {
     transform_.rotate_.y += 2.0;
@@ -55,14 +54,18 @@ void Bullet::Update()
 
 }
 
-//•`‰æ
 void Bullet::Draw()
 {
     Model::SetTransform(hModel_, transform_);
     Model::Draw(hModel_);
 }
 
-//ŠJ•ú
 void Bullet::Release()
 {
+}
+
+void Bullet::OnCollision(GameObject* pTarget)
+{
+    KillMe();
+    pTarget->KillMe();
 }
