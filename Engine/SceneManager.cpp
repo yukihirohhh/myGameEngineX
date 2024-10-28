@@ -2,9 +2,11 @@
 #include "Model.h"
 #include "../PlayScene.h"
 #include "../TestScene.h"
+#include "../TitleScene.h"
+#include "../GameOverScene.h"
 
 SceneManager::SceneManager(GameObject* parent)
-	: GameObject(parent, "SceneManager")
+    : GameObject(parent, "SceneManager")
 {
 }
 
@@ -15,9 +17,9 @@ SceneManager::~SceneManager()
 void SceneManager::Initialize()
 {
     //Å‰‚ÌƒV[ƒ“‚ğ€”õ
-    currentSceneID_ = SCENE_ID_PLAY;
+    currentSceneID_ = SCENE_ID_TITLE;
     nextSceneID_ = currentSceneID_;
-	Instantiate<PlayScene>(this);
+    Instantiate<TitleScene>(this);
 }
 
 void SceneManager::Update()
@@ -38,7 +40,9 @@ void SceneManager::Update()
         switch (nextSceneID_)
         {
         case SCENE_ID_TEST: Instantiate<TestScene>(this); break;
+        case SCENE_ID_TITLE:Instantiate<TitleScene>(this); break;
         case SCENE_ID_PLAY: Instantiate<PlayScene>(this); break;
+        case SCENE_ID_GAMEOVER: Instantiate<GameOverScene>(this); break;
         }
 
         currentSceneID_ = nextSceneID_;

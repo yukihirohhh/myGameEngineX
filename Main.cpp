@@ -8,7 +8,6 @@
 #include "Engine/RootJob.h"
 #include "Engine/Model.h"
 
-
 #pragma comment(lib, "winmm.lib")
 
 //定数宣言
@@ -19,9 +18,7 @@ const int WINDOW_HEIGHT =	600;			//ウィンドウの高さ
 //プロトタイプ宣言
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-
 RootJob* pRootJob;
-
 
 //エントリーポイント
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, int nCmdShow)
@@ -78,14 +75,10 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
 	}
 
 	Input::Initialize(hWnd);
-
 	Camera::Initialize();
-
 	pRootJob = new RootJob(nullptr);
 	pRootJob->Initialize();
 
-
-	//メッセージループ（何か起きるのを待つ）
 	MSG msg;
 	ZeroMemory(&msg, sizeof(msg));
 	while (msg.message != WM_QUIT)
@@ -122,12 +115,9 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
 				continue;
 			}
 			lastUpdateTime = nowTime;
-
 			countFps++;
-
 			Input::Update();
 			pRootJob->UpdateSub();
-
 			if (Input::IsKeyUp(DIK_ESCAPE))
 			{
 				static int cnt = 0;
@@ -137,29 +127,16 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
 					PostQuitMessage(0);
 				}
 			}
-
-
-			//ゲームの処理
 			Direct3D::BeginDraw();
-
 			Camera::Update();
-
-			//描画処理
 			pRootJob->DrawSub();
-
-
-
 			Direct3D::EndDraw();
-
 			timeEndPeriod(1);
 		}
 	}
-
 	Model::Release();
-	
 	pRootJob->ReleaseSub();
 	SAFE_DELETE(pRootJob);
-
 	Input::Release();
 	Direct3D::Release();
 	CoUninitialize();

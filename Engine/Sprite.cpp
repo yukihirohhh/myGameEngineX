@@ -64,21 +64,6 @@ void Sprite::Release()
 	SAFE_RELEASE(pVertexBuffer_);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-///////////////ここからはprivate関数///////////////
-
 //頂点情報の準備
 void Sprite::InitVertexData()
 {
@@ -187,7 +172,7 @@ HRESULT Sprite::LoadTexture()
 	pTexture_ = new Texture;
 
 	HRESULT hr;
-	hr = pTexture_->Load(L"Assets\\Dice.png");
+	hr = pTexture_->Load(L"Assets\\title.png");
 	if (FAILED(hr))
 	{
 		MessageBox(NULL, L"テクスチャの作成に失敗しました", L"エラー", MB_OK);

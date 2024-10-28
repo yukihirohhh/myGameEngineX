@@ -31,11 +31,11 @@ void Player::Update()
 
     if (Input::IsKey(DIK_LEFT))
     {
-        transform_.position_.x -= 0.1f;
+        transform_.position_.x -= 0.2f;
     }
     if (Input::IsKey(DIK_RIGHT))
     {
-        transform_.position_.x += 0.1f;
+        transform_.position_.x += 0.2f;
     }
 
     if (Input::IsKeyDown(DIK_SPACE))
@@ -45,10 +45,10 @@ void Player::Update()
 
     }
 
-    if (Input::IsKey(DIK_RETURN))
+    if (Input::IsKeyDown(DIK_RETURN))
     {
         SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-        pSceneManager->ChangeScene(SCENE_ID_TEST);
+        pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
     }
 }
 

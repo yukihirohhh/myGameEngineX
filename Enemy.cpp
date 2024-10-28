@@ -18,12 +18,11 @@ void Enemy::Initialize()
     pFbx = new Fbx;
     pFbx->Load("Assets/oden.fbx");
 
-    transform_.position_.y = 5.0f;
-    transform_.scale_.x = 0.5f;
-    transform_.scale_.y = 0.5f;
-    transform_.scale_.z = 0.5f;
-    //SphereCollider* collision = new SphereCollider(1.0f);
-    //AddCollider(collision);
+    transform_.position_.z = 20.0f;
+
+
+    SphereCollider* collision = new SphereCollider(1.0f);
+    AddCollider(collision);
 }
 
 void Enemy::Update()
