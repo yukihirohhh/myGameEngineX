@@ -43,4 +43,6 @@ void Enemy::OnCollision(GameObject* pTarget)
 {
     KillMe();
     pTarget->KillMe();
+
+
 }

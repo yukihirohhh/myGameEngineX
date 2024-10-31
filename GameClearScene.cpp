@@ -1,19 +1,19 @@
-#include "GameOverScene.h"
+#include "GameClearScene.h"
 #include "Engine/Input.h"
 #include "Engine/SceneManager.h"
 
-GameOverScene::GameOverScene(GameObject* parent)
+GameClearScene::GameClearScene(GameObject* parent)
     : GameObject(parent, "GameOverScene"), sprite(nullptr)
 {
 }
 
-void GameOverScene::Initialize()
+void GameClearScene::Initialize()
 {
     sprite = new Sprite();
-    sprite->Initialize(L"Assets/gameover.png");
+    sprite->Initialize(L"Assets/gameclear.png");
 }
 
-void GameOverScene::Update()
+void GameClearScene::Update()
 {
     if (Input::IsKeyDown(DIK_RETURN))
     {
@@ -22,7 +22,7 @@ void GameOverScene::Update()
     }
 }
 
-void GameOverScene::Draw()
+void GameClearScene::Draw()
 {
     Transform transform;
     if (sprite) {
@@ -30,6 +30,6 @@ void GameOverScene::Draw()
     }
 }
 
-void GameOverScene::Release()
+void GameClearScene::Release()
 {
 }

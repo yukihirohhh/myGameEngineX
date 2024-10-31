@@ -14,30 +14,30 @@ Sprite::~Sprite()
 	Release();
 }
 
-HRESULT Sprite::Initialize()
+HRESULT Sprite::Initialize(const std::wstring& filePath)
 {
-	//頂点情報
-	InitVertexData();					//データを用意して
-	if (FAILED(CreateVertexBuffer()))	//頂点バッファ作成
+	// 頂点情報
+	InitVertexData();                    // データを用意して
+	if (FAILED(CreateVertexBuffer()))    // 頂点バッファ作成
 	{
 		return E_FAIL;
 	}
 
-	//インデックス情報
-	InitIndexData();					//データを用意して
-	if (FAILED(CreateIndexBuffer()))	//インデックスバッファ作成
+	// インデックス情報
+	InitIndexData();                     // データを用意して
+	if (FAILED(CreateIndexBuffer()))     // インデックスバッファ作成
 	{
 		return E_FAIL;
 	}
 
-	//コンスタントバッファ作成
+	// コンスタントバッファ作成
 	if (FAILED(CreateConstantBuffer()))
 	{
 		return E_FAIL;
 	}
 
-	//テクスチャのロード
-	if (FAILED(LoadTexture()))
+	// テクスチャのロード（引数で渡されたファイルパスを使用）
+	if (FAILED(LoadTexture(filePath)))
 	{
 		return E_FAIL;
 	}
@@ -167,12 +167,12 @@ HRESULT Sprite::CreateConstantBuffer()
 }
 
 //テクスチャをロード
-HRESULT Sprite::LoadTexture()
+HRESULT Sprite::LoadTexture(const std::wstring& filePath)
 {
+	SAFE_DELETE(pTexture_);  // 既存のテクスチャを削除
 	pTexture_ = new Texture;
 
-	HRESULT hr;
-	hr = pTexture_->Load(L"Assets\\title.png");
+	HRESULT hr = pTexture_->Load(filePath.c_str()); // 指定されたパスでテクスチャをロード
 	if (FAILED(hr))
 	{
 		MessageBox(NULL, L"テクスチャの作成に失敗しました", L"エラー", MB_OK);

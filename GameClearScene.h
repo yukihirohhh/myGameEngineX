@@ -2,11 +2,11 @@
 #include "Engine/GameObject.h"
 #include "Engine/Sprite.h"
 
-class TitleScene : public GameObject
+class GameClearScene : public GameObject
 {
 	Sprite* sprite;
 public:
-	TitleScene(GameObject* parent);
+	GameClearScene(GameObject* parent);
 	void Initialize() override;
 	void Update() override;
 	void Draw() override;

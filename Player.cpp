@@ -22,12 +22,12 @@ void Player::Initialize()
     transform_.scale_.y = 0.5f;
     transform_.scale_.z = 0.5f;
 
-    Instantiate<MiniOden>(this);
+
 }
 
 void Player::Update()
 {
-    transform_.rotate_.y++;
+    transform_.rotate_.y += 50;
 
     if (Input::IsKey(DIK_LEFT))
     {
@@ -45,11 +45,6 @@ void Player::Update()
 
     }
 
-    if (Input::IsKeyDown(DIK_RETURN))
-    {
-        SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-        pSceneManager->ChangeScene(SCENE_ID_GAMEOVER);
-    }
 }
 
 void Player::Draw()

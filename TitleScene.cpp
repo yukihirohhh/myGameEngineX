@@ -5,14 +5,14 @@
 
 
 TitleScene::TitleScene(GameObject* parent)
-    : GameObject(parent, "TitleScene"), m_pTitleSprite(nullptr)
+    : GameObject(parent, "TitleScene"), sprite(nullptr)
 {
 }
 
 void TitleScene::Initialize()
 {
-    m_pTitleSprite = new Sprite();
-    m_pTitleSprite->Initialize();
+    sprite = new Sprite();
+    sprite->Initialize(L"Assets/title.png");
 }
 
 void TitleScene::Update()
@@ -27,8 +27,8 @@ void TitleScene::Update()
 void TitleScene::Draw()
 {
     Transform transform;
-    if (m_pTitleSprite) {
-        m_pTitleSprite->Draw(transform);
+    if (sprite) {
+        sprite->Draw(transform);
     }
 }
 

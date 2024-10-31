@@ -31,7 +31,7 @@ protected:
 public:
 	Sprite();
 	~Sprite();
-	HRESULT Initialize();
+	HRESULT Initialize(const std::wstring& filePath);
 	void Draw(Transform& transform);
 	void Release();
 private:
@@ -40,7 +40,7 @@ private:
 	virtual void InitIndexData();		//インデックス情報を準備
 	HRESULT CreateIndexBuffer();		//インデックスバッファを作成
 	HRESULT CreateConstantBuffer();		//コンスタントバッファ作成
-	HRESULT LoadTexture();				//テクスチャをロード
+	HRESULT LoadTexture(const std::wstring& filePath);				//テクスチャをロード
 	void PassDataToCB(DirectX::XMMATRIX worldMatrix);	//コンスタントバッファに各種情報を渡す
 	void SetBufferToPipeline();							//各バッファをパイプラインにセット
 };
